@@ -1,23 +1,14 @@
 {
   "name": "Ollama Development",
-  "image": "ollama/ollama:latest",
-  
-  "mounts": [
-    "source=ollama-models,target=/root/.ollama/models,type=volume"
-  ],
-  
-  "containerEnv": {
-    "OLLAMA_HOST": "0.0.0.0",
-    "OLLAMA_KEEP_ALIVE": "24h"
-  },
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "ollama",
+  "workspaceFolder": "/workspaces/ollama",
   
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
   
-  "postCreateCommand": "ollama serve > /dev/null 2>&1 &",
-  
-  "forwardPorts": [11434],
+  "postCreateCommand": "echo 'Ollama container starting...' && ollama serve > /dev/null 2>&1 &",
   
   "customizations": {
     "vscode": {

@@ -1,7 +1,10 @@
 services:
   ollama:
     container_name: ollama-container  # Specific container name
-    image: ollama/ollama:latest
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    # image: ollama/ollama:latest
     ports:
       - "11434:11434"
     volumes:

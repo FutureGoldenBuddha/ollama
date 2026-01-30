@@ -1,17 +1,17 @@
 services:
   ollama:
     container_name: ollama-container  # Specific container name
-    build:
-      context: ..
-      dockerfile: Dockerfile
-    # image: ollama/ollama:latest
+    # build:
+    #   context: ..
+    #   dockerfile: Dockerfile
+    image: ollama/ollama:latest
     ports:
       - "11434:11434"
     volumes:
       - ollama-models:/root/.ollama/models  # Named volume for model persistence
-    environment:
-      - OLLAMA_HOST=0.0.0.0
-      - OLLAMA_KEEP_ALIVE=24h
+    # environment:
+    #  - OLLAMA_HOST=0.0.0.0
+    #  - OLLAMA_KEEP_ALIVE=24h
     restart: unless-stopped
     # For GPU support (uncomment if needed):
     deploy:
@@ -19,7 +19,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
+              count: all
               capabilities: [gpu]
 
 volumes:

@@ -12,6 +12,7 @@ services:
     # environment:
     #  - OLLAMA_HOST=0.0.0.0
     #  - OLLAMA_KEEP_ALIVE=24h
+    mem_limit: 10g
     restart: unless-stopped
     # For GPU support (uncomment if needed):
     deploy:
